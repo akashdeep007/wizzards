@@ -1,0 +1,2 @@
+# wizzards
+ Freshers Registration Application

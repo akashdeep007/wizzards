@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "567848877090",
+    "firebase_url": "https://wizzards-2f0cc.firebaseio.com",
+    "project_id": "wizzards-2f0cc",
+    "storage_bucket": "wizzards-2f0cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:567848877090:android:463589e32b06e826b5de7b",
+        "android_client_info": {
+          "package_name": "com.radium.wizzards"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "567848877090-g1c5k3bs6h3j2iplpnbifu391evvr6e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIGj0RzzLxH1dO8J4r2mcFeJRSBRLpNVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "567848877090-g1c5k3bs6h3j2iplpnbifu391evvr6e7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

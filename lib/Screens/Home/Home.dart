@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wizzards/Screens/Home/StudentInformation/StudentInformation.dart';
+import 'package:wizzards/Screens/Home/EventInformation/EventInformation.dart';
 import 'package:wizzards/Services/auth.dart';
 
 class Home extends StatelessWidget {
@@ -8,7 +10,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          RaisedButton(
+          FlatButton(
             child: Text("Logout"),
             onPressed: () async {
              await _auth.signOut();
@@ -17,6 +19,7 @@ class Home extends StatelessWidget {
         ],
         title: Text("Wizzards"),
       ),
+      body: EventInformation(),
     );
   }
 }

@@ -17,6 +17,13 @@ class _StudentInformationState extends State<StudentInformation> {
     return StreamProvider<List<UserData>>.value(
         value: DatabaseService().students,
       child: Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          label: Text(" Back "),
+        ),
         body: Container(
           child: Column(
             children: <Widget>[

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wizzards/Models/User.dart';
 import 'package:wizzards/Screens/Home/StudentInformation/StudentDash.dart';
+import 'package:wizzards/Screens/Home/StudentInformation/StudentTile.dart';
 
 class StudentList extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _StudentListState extends State<StudentList> {
       children: <Widget>[
         StudentDash(studentsCounts : students.length),
         ListView.builder(shrinkWrap:true, itemCount : students.length ,itemBuilder: (context, index){
-          return (Text(students[index].name));
+          return (StudentTile(index : index,student : students[index]));
         },)
       ],
     );}

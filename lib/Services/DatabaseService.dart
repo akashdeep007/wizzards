@@ -27,4 +27,20 @@ class DatabaseService{
   Stream<List<UserData>> get students {
     return studentCollection.snapshots().map(_studentListFromSnapshot);
   }
+
+
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+        name: snapshot.data['name'],
+        email: snapshot.data['email'],
+        food: snapshot.data['Interest']);
+  }
+
+  //get user doc
+  Stream<UserData> get userData {
+    return studentCollection
+        .document(uid)
+        .snapshots()
+        .map(_userDataFromSnapshot);
+  }
 }

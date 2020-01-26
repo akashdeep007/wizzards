@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wizzards/Screens/Home/CustomDrawer/CustomDrawer.dart';
 import 'package:wizzards/Screens/Home/StudentInformation/StudentInformation.dart';
 import 'package:wizzards/Screens/Home/EventInformation/EventInformation.dart';
 import 'package:wizzards/Services/auth.dart';
@@ -8,6 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     AuthService _auth = AuthService();
     return Scaffold(
+      drawer: CustomDrawer(),
       appBar: AppBar(
         actions: <Widget>[
           FlatButton(

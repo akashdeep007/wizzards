@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wizzards/Models/Event.dart';
+import 'package:wizzards/Screens/Home/EventInformation/EventTile.dart';
 import 'package:wizzards/Screens/Home/StudentInformation/StudentDash.dart';
 
 class EventList extends StatefulWidget {
@@ -19,8 +20,8 @@ class _EventListState extends State<EventList> {
     else{
       return Column(
         children: <Widget>[
-          ListView.builder(shrinkWrap:true, itemCount : events.length ,itemBuilder: (context, index){
-            return (Text(events[index].eventDetails));
+          ListView.builder(shrinkWrap:true, reverse: true, itemCount : events.length - 1  ,itemBuilder: (context, index){
+            return EventTile(index : index, event : events[index]);
           },)
         ],
       );}

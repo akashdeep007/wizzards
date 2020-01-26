@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:wizzards/Services/auth.dart';
 import 'package:wizzards/Shared/Loading.dart';
+import 'package:grouped_buttons/grouped_buttons.dart';
 class Register extends StatefulWidget {
   final Function toggleView;
 Register({this.toggleView});
@@ -9,7 +11,10 @@ Register({this.toggleView});
 }
 
 class _RegisterState extends State<Register> {
+  String _picked = "NonVeg";
   bool loading = false;
+  bool veg = false;
+  bool nonVeg = false;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +32,9 @@ class _RegisterState extends State<Register> {
           child: Container (
             padding: EdgeInsets.only(left: 20, right: 20, top: 60),
             child : Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+
 
                 Row ( mainAxisAlignment : MainAxisAlignment.spaceBetween, children: <Widget>[
                   RaisedButton(
@@ -43,7 +50,7 @@ class _RegisterState extends State<Register> {
                       if (_formKey.currentState.validate()){
                         setState(() =>  loading = true);
                           dynamic result = await _auth.registerWithEmailAndPassword(
-                              name, email, password, food);
+                              name, email, password, _picked);
                           if (result == null) {
                             setState(() {
                               loading = false;
@@ -83,18 +90,36 @@ class _RegisterState extends State<Register> {
                   },
                 ),
                 SizedBox(height: 20,),
-                TextFormField(
-                  validator: (val) => val.isEmpty ? 'Enter an Email' : null,
-                  decoration: InputDecoration(labelText: "Veg/NonVeg"),
-                  onChanged: (txt) {
-                    food = txt;
-                  },
-                ),
-                Text(error , style: TextStyle(color: Colors.red),),
-
-              ],
-            ),),
-        ));
+//                TextFormField(
+//                  validator: (val) => val.isEmpty ? 'Enter an Email' : null,
+//                  decoration: InputDecoration(labelText: "Veg/NonVeg"),
+//                  onChanged: (txt) {
+//                    food = txt;
+//                  },
+//                ),
+              RadioButtonGroup(
+                orientation: GroupedButtonsOrientation.HORIZONTAL,
+                margin: const EdgeInsets.only(left: 20.0,),
+                onSelected: (String selected) => setState((){
+                  _picked = selected;
+                  print(_picked);
+                }),
+                labels: <String>[
+                  "Veg",
+                  "NonVeg",
+                ],
+                picked: _picked,
+                itemBuilder: (Radio rb, Text txt, int i){
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      rb,
+                      txt,
+                    ],
+                  );
+                },
+              ),]),
+        )));
   }
 }
 

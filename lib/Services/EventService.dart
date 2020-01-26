@@ -38,7 +38,7 @@ class EventService {
         ravenclawPoints: snapshot.data['Ravenclaw'],
         hufflepuffPoints: snapshot.data['Hufflepuff'],
         slytherinPoints: snapshot.data['Slytherin'],
-    totalPoints : total);
+    totalPoints : (total).toInt());
 
   }
 

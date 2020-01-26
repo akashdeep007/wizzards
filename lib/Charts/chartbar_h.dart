@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChartBarH extends StatelessWidget {
-  double scoreperc;
+  final double scoreperc;
 
   ChartBarH({this.scoreperc});
 

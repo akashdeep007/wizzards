@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wizzards/Shared/FlutterProgressBar.dart';
+import 'package:wizzards/Charts/chartbar_G.dart';
+import 'package:wizzards/Charts/chartbar_R.dart';
+import 'package:wizzards/Charts/chartbar_S.dart';
+import 'package:wizzards/Charts/chartbar_h.dart';
 import 'package:wizzards/Models/Points.dart';
-
 
 class PointsChart extends StatefulWidget {
   @override
@@ -10,133 +12,200 @@ class PointsChart extends StatefulWidget {
 }
 
 class _PointsChartState extends State<PointsChart> {
-
   @override
   Widget build(BuildContext context) {
-    int gryffindorPoints, hufflepuffPoints, ravenclawPoints, slytherinPoints,gpoints, hpoints, spoints, rpoints;
+    double gryffindorPoints, hufflepuffPoints, ravenclawPoints, slytherinPoints;
+    int gpoints, hpoints, spoints, rpoints;
     final points = Provider.of<Points>(context);
     print("Points is NUll");
     if (points == null) {
-      gryffindorPoints = ((25 / 100) *
-          100).toInt();
-      hufflepuffPoints = ((25 / 100) *
-          100).toInt();
-      ravenclawPoints = ((25 / 100) *
-          100).toInt();
-      slytherinPoints = ((25 / 100) *
-          100).toInt();
+      gryffindorPoints = (25 / 100).toDouble();
+      hufflepuffPoints = (25 / 100).toDouble();
+      ravenclawPoints = (25 / 100).toDouble();
+      slytherinPoints = (25 / 100).toDouble();
       rpoints = 25;
       gpoints = 25;
       spoints = 25;
       hpoints = 25;
-    }
-    else {
-      gryffindorPoints = ((points.gryffinforPoints / points.totalPoints) *
-          100).toInt();
-      hufflepuffPoints = ((points.hufflepuffPoints / points.totalPoints) *
-          100).toInt();
-      ravenclawPoints = ((points.ravenclawPoints / points.totalPoints) *
-          100).toInt();
-      slytherinPoints = ((points.slytherinPoints / points.totalPoints) *
-          100).toInt();
+    } else {
+      gryffindorPoints =
+          (points.gryffinforPoints / points.totalPoints).toDouble();
+      hufflepuffPoints =
+          (points.hufflepuffPoints / points.totalPoints).toDouble();
+      ravenclawPoints =
+          (points.ravenclawPoints / points.totalPoints).toDouble();
+      slytherinPoints =
+          (points.slytherinPoints / points.totalPoints).toDouble();
       rpoints = points.ravenclawPoints;
       gpoints = points.gryffinforPoints;
       spoints = points.slytherinPoints;
       hpoints = points.hufflepuffPoints;
-
     }
-      return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(bottom: 10, top: 10),
-                  child: Image.asset('assets/images/gryffindor.png', height: 64,),
-
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children:<
+        Widget>[
+      Stack(
+        overflow: Overflow.clip,
+        children: <Widget>[
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text("  "),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: 70.0,
+                        height: 70.0,
+                        alignment: Alignment.center,
+                        decoration: new BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/slytherin.png'),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                      ChartBarS(
+                        scoreperc: (slytherinPoints).toDouble(),
+                      ),
+                      Text(
+                        "$spoints",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text("  "),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: 70.0,
+                        height: 70.0,
+                        alignment: Alignment.center,
+                        decoration: new BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/ravenclaw.png'),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                      ChartBarR(
+                        scoreperc: (ravenclawPoints).toDouble(),
+                      ),
+                      Text(
+                        "$rpoints",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text("  "),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: 70.0,
+                        height: 70.0,
+                        alignment: Alignment.center,
+                        decoration: new BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/gryffindor.png'),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                      ChartBarG(
+                        scoreperc: (gryffindorPoints).toDouble(),
+                      ),
+                      Text(
+                        "$gpoints",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: <Widget>[
+                      Text("  "),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: 70.0,
+                        height: 70.0,
+                        alignment: Alignment.center,
+                        decoration: new BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/hufflepuff.png'),
+                              fit: BoxFit.fill),
+                        ),
+                      ),
+                      ChartBarH(
+                        scoreperc: (hufflepuffPoints).toDouble(),
+                      ),
+                      Text(
+                        "$hpoints",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: 90.0,
+                height: 90.0,
+                alignment: Alignment.center,
+                decoration: new BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/trophy.png'),
+                      fit: BoxFit.fill),
                 ),
-                Container(
-                  height: 200,
-                  child: FAProgressBar(size: 40,
-                    animatedDuration: Duration(seconds: 1),
-                    borderColor: Colors.black,
-                    progressColor: Color.fromARGB(200, 127, 9, 9),
-                    borderRadius: 20,
-                    borderWidth: 1,
-                    maxValue: 100,
-                    currentValue: gryffindorPoints + 30,
-                    verticalDirection: VerticalDirection.up,
-                    direction: Axis.vertical,),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Draco Dormiens Nunquam Titillandus",
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
-                Text(gpoints.toString()),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(bottom: 10, top: 10),
-                  child: Image.asset('assets/images/hufflepuff.png', height: 64,),
-
+              ),
+              Text(
+                "May the best House Win!",
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 30,
                 ),
-                Container(
-                  height: 200,
-                  child: FAProgressBar(size: 40,
-                    borderColor: Colors.black,
-                    borderWidth: 1,
-                    progressColor: Color.fromARGB(200,238,225,23),
-                    borderRadius: 20,
-                    maxValue: 100,
-                    currentValue: hufflepuffPoints + 30,
-                    verticalDirection: VerticalDirection.up,
-                    direction: Axis.vertical,),
-                ),
-                Text(hpoints.toString()),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(bottom: 10, top: 10),
-                  child: Image.asset('assets/images/ravenclaw.png', height: 64,),
-
-                ),
-                Container(
-                  height: 200,
-                  child: FAProgressBar(size: 40,
-                    borderColor: Colors.black,
-                    borderWidth: 1,
-                    progressColor: Color.fromARGB(200,0,10,144),
-                    borderRadius: 20,
-                    maxValue: 100,
-                    currentValue: ravenclawPoints + 30,
-                    verticalDirection: VerticalDirection.up,
-                    direction: Axis.vertical,),
-                ),
-                Text(rpoints.toString()),
-              ],
-            ),
-            Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(bottom: 10, top: 10),
-                  child: Image.asset('assets/images/slytherin.png', height: 64,),
-
-                ),
-                Container(
-                  height: 200,
-                  child: FAProgressBar(size: 40,
-                    borderColor: Colors.black,
-                    borderWidth: 1,
-                    progressColor: Color.fromARGB(200,13,98,23),
-                    borderRadius: 20,
-                    maxValue: 100,
-                    currentValue: slytherinPoints + 30,
-                    verticalDirection: VerticalDirection.up,
-                    direction: Axis.vertical,),
-                ),
-                Text(spoints.toString()),
-              ],
-            ),
-          ]);
-    }
+              ),
+            ],
+          ),
+        ],
+      ),
+    ]);
+  }
 }

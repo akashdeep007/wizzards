@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:wizzards/Models/Event.dart';
+import 'package:wizzards/Models/Points.dart';
 
 class EventService {
   final CollectionReference eventCollection =
@@ -8,7 +9,7 @@ class EventService {
   List<Event> _eventListFromSnapshot(QuerySnapshot snapshot) {
     return snapshot.documents.map((doc) {
       return Event(
-          eventHeadline: doc.data['headline'] ?? "",
+          eventHeadline: doc.data['eventHeadline'] ?? "",
           eventDetails: doc.data['eventDetails'] ?? "",
           startDate: doc.data['startDate'] ?? "",
           endDate: doc.data['endDate'] ?? "");
@@ -29,5 +30,23 @@ class EventService {
       startDate: startDate,
       endDate: endDate
     });
+  }
+  Points _pointsDataFromSnapshot(DocumentSnapshot snapshot) {
+    final int total = snapshot.data['Gryffindor'] + snapshot.data['Ravenclaw']+snapshot.data['Hufflepuff'] + snapshot.data['Slytherin'];
+    return Points(
+        gryffinforPoints: snapshot.data['Gryffindor'],
+        ravenclawPoints: snapshot.data['Ravenclaw'],
+        hufflepuffPoints: snapshot.data['Hufflepuff'],
+        slytherinPoints: snapshot.data['Slytherin'],
+    totalPoints : total);
+
+  }
+
+  //get user doc
+  Stream<Points> get pointData {
+    return eventCollection
+        .document('Points')
+        .snapshots()
+        .map(_pointsDataFromSnapshot);
   }
 }

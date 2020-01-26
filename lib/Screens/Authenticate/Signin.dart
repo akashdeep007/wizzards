@@ -5,6 +5,7 @@ import 'package:wizzards/Shared/Loading.dart';
 class Signin extends StatefulWidget {
   final Function toggleView;
   Signin({this.toggleView});
+
   @override
   _SigninState createState() => _SigninState();
 }

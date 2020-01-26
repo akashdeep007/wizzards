@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wizzards/Screens/Home/CustomDrawer/LoggedUserInfo.dart';
+import 'package:wizzards/Screens/Home/PointsChart/PointsChartPage.dart';
 import 'package:wizzards/Screens/Home/StudentInformation/StudentInformation.dart';
 import 'package:wizzards/Services/DatabaseService.dart';
-import 'package:wizzards/Services/auth.dart';
 import 'package:wizzards/Models/User.dart';
 
 
@@ -15,7 +15,6 @@ class CustomDrawer extends StatefulWidget {
 class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
-    AuthService _auth = AuthService();
     final user = Provider.of<User>(context);
     return StreamProvider.value(
       updateShouldNotify: (context, user) => true,
@@ -31,6 +30,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       context,
                       new MaterialPageRoute(
                           builder: (context) => StudentInformation()));
+                },
+              ),
+              FlatButton(
+                child: Text("Points Chart", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => PointsChartPage()));
                 },
               ),
             ],

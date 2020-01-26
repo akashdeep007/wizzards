@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wizzards/Models/Event.dart';
 import 'package:wizzards/Screens/Home/EventInformation/EventTile.dart';
-import 'package:wizzards/Screens/Home/StudentInformation/StudentDash.dart';
 
 class EventList extends StatefulWidget {
   @override

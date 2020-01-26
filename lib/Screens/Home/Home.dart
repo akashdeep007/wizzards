@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wizzards/Screens/Home/CustomDrawer/CustomDrawer.dart';
-import 'package:wizzards/Screens/Home/StudentInformation/StudentInformation.dart';
 import 'package:wizzards/Screens/Home/EventInformation/EventInformation.dart';
+import 'package:wizzards/Screens/Home/PointsChart/PointsChartPage.dart';
 import 'package:wizzards/Services/auth.dart';
 
 class Home extends StatelessWidget {
@@ -21,7 +21,14 @@ class Home extends StatelessWidget {
         ],
         title: Text("Wizzards"),
       ),
-      body: EventInformation(),
+      body: Column(
+        children: <Widget>[
+          PointsChartPage(),
+          Container( padding : EdgeInsets.all(10), child: Text("Events", style: TextStyle(fontSize: 36),),),
+
+          Expanded( child: EventInformation()),
+        ],
+      ),
     );
   }
 }

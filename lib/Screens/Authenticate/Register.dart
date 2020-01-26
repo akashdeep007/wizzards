@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:wizzards/Services/auth.dart';
 import 'package:wizzards/Shared/Loading.dart';
 class Register extends StatefulWidget {

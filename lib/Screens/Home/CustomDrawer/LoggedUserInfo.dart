@@ -12,6 +12,7 @@ class LoggedUserInfo extends StatelessWidget {
         height: 250,
         color: Colors.amber,
         child : Column(
+          mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Icon(Icons.person, size: 128,),
         SizedBox(height: 30,),

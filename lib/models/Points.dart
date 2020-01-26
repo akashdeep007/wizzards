@@ -1,4 +1,8 @@
 class Points {
-  final int g, r, h, s, total;
-  Points({this.g, this.r, this.h, this.s, this.total});
+  final int gryffinforPoints, ravenclawPoints, hufflepuffPoints, slytherinPoints, totalPoints;
+
+  Points({this.gryffinforPoints, this.ravenclawPoints, this.hufflepuffPoints,
+      this.slytherinPoints, this.totalPoints});
+
+
 }

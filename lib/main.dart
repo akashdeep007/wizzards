@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hogwarts/services/auth.dart';
+import 'package:wizzards/Services/auth.dart';
 import 'package:provider/provider.dart';
-
-import 'screens/splashscreen/splash.dart';
+import 'package:wizzards/Shared/SplashScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,11 +12,11 @@ class MyApp extends StatelessWidget {
     return StreamProvider.value(
       value: AuthService().user,
       child: MaterialApp(
-        title: 'Hogwarts',
+        title: 'Wizzards',
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-        home: Spla(),
+        home: Splash(),
       ),
     );
   }

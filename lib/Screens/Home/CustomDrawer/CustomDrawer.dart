@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wizzards/Screens/Home/CarousalPage/Carousal.dart';
 import 'package:wizzards/Screens/Home/CustomDrawer/LoggedUserInfo.dart';
 import 'package:wizzards/Screens/Home/PointsChart/PointsChartPage.dart';
 import 'package:wizzards/Screens/Home/StudentInformation/StudentInformation.dart';
@@ -39,6 +40,15 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       context,
                       new MaterialPageRoute(
                           builder: (context) => PointsChartPage()));
+                },
+              ),
+              FlatButton(
+                child: Text("Carousal", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) => Carousal()));
                 },
               ),
             ],

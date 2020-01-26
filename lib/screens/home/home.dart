@@ -1,32 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:hogwarts/models/Event.dart';
-import 'package:hogwarts/screens/home/CustomDrawer.dart';
-import 'package:hogwarts/screens/home/EventList.dart';
-import 'package:hogwarts/services/events.dart';
-import 'package:provider/provider.dart';
+import 'package:wizzards/Screens/Home/CustomDrawer/CustomDrawer.dart';
+import 'package:wizzards/Screens/Home/EventInformation/EventInformation.dart';
+import 'package:wizzards/Services/auth.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<List<Event>>.value(
-      value: EventService().events,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("HomePage"),
-        ),
-        drawer: CustomDrawer(),
-        body: Column(
-          children: <Widget>[
-            Card(
-              child: Container(
-                color: Colors.yellowAccent,
-                height: 200,
-                width: double.infinity,
-              ),
-            ),
-            Expanded(child: EventList()),
-          ],
-        ),
+    AuthService _auth = AuthService();
+    return Scaffold(
+      drawer: CustomDrawer(),
+      appBar: AppBar(
+        actions: <Widget>[
+          FlatButton(
+            child: Text("Logout"),
+            onPressed: () async {
+             await _auth.signOut();
+            },
+          ),
+        ],
+        title: Text("Wizzards"),
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded( child: EventInformation()),
+        ],
       ),
     );
   }

@@ -7,11 +7,14 @@ class PointsChartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<Points>.value(value: EventService().pointData,
-    child : Container (
+    child : Scaffold (
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton.extended(onPressed: () => Navigator.pop(context), label: Text(" Back ")),
+        body : Container (
         padding: EdgeInsets.only(top: 40, bottom: 40) ,color: Colors.white, child : Column(
       children: <Widget>[
         PointsChart(),
       ],
-    )));
+    ))));
   }
 }

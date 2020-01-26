@@ -13,7 +13,7 @@ class _PointsChartState extends State<PointsChart> {
 
   @override
   Widget build(BuildContext context) {
-    int gryffindorPoints, hufflepuffPoints, ravenclawPoints, slytherinPoints;
+    int gryffindorPoints, hufflepuffPoints, ravenclawPoints, slytherinPoints,gpoints, hpoints, spoints, rpoints;
     final points = Provider.of<Points>(context);
     print("Points is NUll");
     if (points == null) {
@@ -25,6 +25,10 @@ class _PointsChartState extends State<PointsChart> {
           100).toInt();
       slytherinPoints = ((25 / 100) *
           100).toInt();
+      rpoints = 25;
+      gpoints = 25;
+      spoints = 25;
+      hpoints = 25;
     }
     else {
       gryffindorPoints = ((points.gryffinforPoints / points.totalPoints) *
@@ -35,72 +39,102 @@ class _PointsChartState extends State<PointsChart> {
           100).toInt();
       slytherinPoints = ((points.slytherinPoints / points.totalPoints) *
           100).toInt();
+      rpoints = points.ravenclawPoints;
+      gpoints = points.gryffinforPoints;
+      spoints = points.slytherinPoints;
+      hpoints = points.hufflepuffPoints;
+
     }
       return Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Column(
               children: <Widget>[
-                Icon(Icons.details, color: Colors.black, size: 40,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10, top: 10),
+                  child: Image.asset('assets/images/gryffindor.png', height: 64,),
+
+                ),
                 Container(
                   height: 200,
                   child: FAProgressBar(size: 40,
+                    animatedDuration: Duration(seconds: 1),
                     borderColor: Colors.black,
                     progressColor: Color.fromARGB(200, 127, 9, 9),
                     borderRadius: 20,
+                    borderWidth: 1,
                     maxValue: 100,
-                    currentValue: gryffindorPoints,
+                    currentValue: gryffindorPoints + 10,
                     verticalDirection: VerticalDirection.up,
                     direction: Axis.vertical,),
-                )
+                ),
+                Text(gpoints.toString()),
               ],
             ),
             Column(
               children: <Widget>[
-                Icon(Icons.details, color: Colors.black, size: 40,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10, top: 10),
+                  child: Image.asset('assets/images/hufflepuff.png', height: 64,),
+
+                ),
                 Container(
                   height: 200,
                   child: FAProgressBar(size: 40,
                     borderColor: Colors.black,
+                    borderWidth: 1,
                     progressColor: Color.fromARGB(200,238,225,23),
                     borderRadius: 20,
                     maxValue: 100,
-                    currentValue: hufflepuffPoints,
+                    currentValue: hufflepuffPoints + 10,
                     verticalDirection: VerticalDirection.up,
                     direction: Axis.vertical,),
-                )
+                ),
+                Text(hpoints.toString()),
               ],
             ),
             Column(
               children: <Widget>[
-                Icon(Icons.details, color: Colors.black, size: 40,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10, top: 10),
+                  child: Image.asset('assets/images/ravenclaw.png', height: 64,),
+
+                ),
                 Container(
                   height: 200,
                   child: FAProgressBar(size: 40,
                     borderColor: Colors.black,
+                    borderWidth: 1,
                     progressColor: Color.fromARGB(200,0,10,144),
                     borderRadius: 20,
                     maxValue: 100,
-                    currentValue: ravenclawPoints,
+                    currentValue: ravenclawPoints + 10,
                     verticalDirection: VerticalDirection.up,
                     direction: Axis.vertical,),
-                )
+                ),
+                Text(rpoints.toString()),
               ],
             ),
             Column(
               children: <Widget>[
-                Icon(Icons.details, color: Colors.black, size: 40,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10, top: 10),
+                  child: Image.asset('assets/images/slytherin.png', height: 64,),
+
+                ),
                 Container(
                   height: 200,
                   child: FAProgressBar(size: 40,
                     borderColor: Colors.black,
+                    borderWidth: 1,
                     progressColor: Color.fromARGB(200,13,98,23),
                     borderRadius: 20,
                     maxValue: 100,
-                    currentValue: slytherinPoints,
+                    currentValue: slytherinPoints + 10,
                     verticalDirection: VerticalDirection.up,
                     direction: Axis.vertical,),
-                )
+                ),
+                Text(spoints.toString()),
               ],
             ),
           ]);

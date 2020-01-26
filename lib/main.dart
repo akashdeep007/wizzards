@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wizzards/Models/User.dart';
 import 'package:wizzards/Screens/wrapper.dart';
 import 'package:wizzards/Services/auth.dart';
+import 'package:wizzards/Shared/SplashScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,12 +14,12 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
     value: AuthService().user,
      child : MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Wizzards',
       theme: ThemeData(
 
         primarySwatch: Colors.blue,
       ),
-      home: Wrapper(),
+      home: Splash(),
     ));
       }
 }

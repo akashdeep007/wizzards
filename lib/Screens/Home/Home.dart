@@ -23,9 +23,6 @@ class Home extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          PointsChartPage(),
-          Container( padding : EdgeInsets.all(10), child: Text("Events", style: TextStyle(fontSize: 36),),),
-
           Expanded( child: EventInformation()),
         ],
       ),

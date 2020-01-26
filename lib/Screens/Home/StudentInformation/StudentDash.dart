@@ -2,10 +2,42 @@
 import 'package:flutter/material.dart';
 class StudentDash extends StatelessWidget {
   final int studentsCounts;
-  StudentDash({this.studentsCounts});
+  final int vegFood;
+  StudentDash({this.studentsCounts, this.vegFood});
 
   @override
   Widget build(BuildContext context) {
-    return Container( child : Text(studentsCounts.toString()));
+    return Container( child : Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          height: 150,
+          width: 180,
+          child: Card(
+            child: Column(
+              children: <Widget>[
+                Text(studentsCounts.toString(), style: TextStyle(fontSize: 64, fontWeight: FontWeight.w600),),
+                Text("Enrolled", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),)
+              ],
+            )
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(top: 40),
+          height: 150,
+          width: 180,
+          child: Card(
+              child: Column(
+                children: <Widget>[
+                  Text(vegFood.toString(), style: TextStyle(fontSize: 64, fontWeight: FontWeight.w600),),
+                  Text("Veg", style: TextStyle(fontSize: 36, fontWeight: FontWeight.w600),)
+                ],
+              )
+          ),
+        ),
+        Container(),
+      ],
+    ));
   }
 }

@@ -10,13 +10,17 @@ class StudentTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape:
+          RoundedRectangleBorder(borderRadius: new BorderRadius.circular(10.0)),
       elevation: 5,
       child: ListTile(
         contentPadding: EdgeInsets.all(10),
         leading: CircleAvatar(
+          backgroundColor: Colors.black54,
           child: Text(
             (index + 1).toString(),
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            style: TextStyle(
+                fontSize: 24, fontWeight: FontWeight.bold, color: Colors.white),
           ),
           radius: 25,
         ),
@@ -24,8 +28,7 @@ class StudentTile extends StatelessWidget {
           student.name,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         ),
-        subtitle:
-            Text("Email: ${student.email}\nFood: ${student.food}"),
+        subtitle: Text("${student.email}\nFood: ${student.food}"),
       ),
     );
   }

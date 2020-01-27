@@ -12,17 +12,33 @@ class _EventListState extends State<EventList> {
   @override
   Widget build(BuildContext context) {
     final events = Provider.of<List<Event>>(context);
-    if (events == null){
-      print("students is null");
+    if (events == null) {
       return Container();
-    }
-    else{
+    } else {
       return Column(
         children: <Widget>[
-          ListView.builder(shrinkWrap:true, reverse: true, itemCount : events.length - 1  ,itemBuilder: (context, index){
-            return EventTile(index : index, event : events[index]);
-          },)
+          Container(
+            padding: EdgeInsets.only(top: 20, bottom: 20),
+            child: Text(
+              "Events",
+              style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.black,
+                  letterSpacing: 12),
+            ),
+          ),
+          ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            reverse: true,
+            itemCount: events.length - 1,
+            itemBuilder: (context, index) {
+              return EventTile(index: index, event: events[index]);
+            },
+          )
         ],
-      );}
+      );
+    }
   }
 }

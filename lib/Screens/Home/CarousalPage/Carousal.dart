@@ -12,17 +12,22 @@ class _CarousalState extends State<Carousal> {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => Navigator.pop(context), label: Text(" Back ")),
+        backgroundColor: Color.fromARGB(255, 27, 38, 44),
+        onPressed: () => Navigator.pop(context),
+        icon: Icon(Icons.arrow_back_ios),
+        label: Text(
+          " Back ",
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
       body: Container(
-        height: 500,
-        width: 500,
-        padding: EdgeInsets.all(20),
+        height: 400,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
           child: Stack(
             children: <Widget>[
               Carousel(
-                dotIncreaseSize: 4,
+                dotIncreaseSize: 1.5,
                 boxFit: BoxFit.scaleDown,
                 images: [
                   AssetImage("assets/images/gryffindor.png"),

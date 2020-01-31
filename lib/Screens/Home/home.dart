@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wizzards/Models/ColorPallete.dart';
 import 'package:wizzards/Models/User.dart';
 import 'package:wizzards/Screens/Home/CustomDrawer/CustomDrawer.dart';
 import 'package:wizzards/Screens/Home/EventInformation/EventInformation.dart';
@@ -8,7 +9,7 @@ import 'package:wizzards/Services/Auth.dart';
 import 'package:wizzards/Shared/Loading.dart';
 
 class Home extends StatelessWidget {
-  Color primaryColor, secondaryColor;
+  ColorPallete colorPallete;
 
   @override
   Widget build(BuildContext context) {
@@ -16,28 +17,30 @@ class Home extends StatelessWidget {
     final userData = Provider.of<UserData>(context);
 
     if (userData == null) {
-      primaryColor = Colors.white;
-      secondaryColor = Colors.red;
+      colorPallete = ColorPallete(Colors.black, Colors.white, Colors.black);
       return Scaffold(body: Loading());
     } else {
       if (userData.house == "hufflepuff") {
-        primaryColor = Colors.yellow;
-        secondaryColor = Colors.black;
+        colorPallete = ColorPallete(Color.fromARGB(255, 255, 157, 10),
+            Color.fromARGB(100, 31, 30, 25), Colors.black);
       } else if (userData.house == "gryffindor") {
-        primaryColor = Colors.red;
-        secondaryColor = Colors.yellowAccent;
+        colorPallete = ColorPallete(Color.fromARGB(255, 102, 0, 0),
+            Color.fromARGB(150, 224, 157, 9), Colors.white);
       } else if (userData.house == "ravenclaw") {
-        primaryColor = Colors.blue;
-        secondaryColor = Colors.black;
+        colorPallete = ColorPallete(Color.fromARGB(255, 25, 57, 86),
+            Color.fromARGB(150, 142, 80, 28), Colors.white);
       } else if (userData.house == "slytherin") {
-        primaryColor = Colors.green;
-        secondaryColor = Colors.grey;
+        colorPallete = ColorPallete(Color.fromARGB(255, 46, 117, 28),
+            Color.fromARGB(100, 204, 204, 204), Colors.white);
+      } else {
+        colorPallete = ColorPallete(Colors.black, Colors.white, Colors.white);
       }
 
       return Scaffold(
-        drawer: CustomDrawer(),
+        drawer: CustomDrawer(colorPallete, userData.house),
         appBar: AppBar(
-          backgroundColor: primaryColor,
+          iconTheme: new IconThemeData(color: colorPallete.textColor),
+          backgroundColor: colorPallete.primaryColor,
           actions: <Widget>[
             ButtonTheme(
               height: 5,
@@ -49,7 +52,7 @@ class Home extends StatelessWidget {
                 color: Colors.white24,
                 child: Text(
                   "Logout",
-                  style: TextStyle(fontSize: 16, color: Colors.white),
+                  style: TextStyle(fontSize: 16, color: colorPallete.textColor),
                 ),
                 onPressed: () async {
                   await _auth.signOut();
@@ -57,16 +60,25 @@ class Home extends StatelessWidget {
               ),
             ),
           ],
-          title: Text("Wizzards"),
+          title: Text(
+            "Wizzards",
+            style: TextStyle(
+                color: colorPallete.textColor,
+                fontSize: 24,
+                fontWeight: FontWeight.bold),
+          ),
         ),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
-            color: secondaryColor,
+            color: colorPallete.secondaryColor,
             child: Column(
               children: <Widget>[
                 PointsChartPage(),
-                SizedBox(height: 500, child: EventInformation()),
+                EventInformation(),
+                SizedBox(
+                  height: 80,
+                )
               ],
             ),
           ),

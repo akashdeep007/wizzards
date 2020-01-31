@@ -11,17 +11,19 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-        seconds: 10,
+        seconds: 4,
         navigateAfterSeconds: new AfterSplash(),
         title: new Text(
-          'Welcome to Wizzards 2020',
-          style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+          'WIZZARDS 2020',
+          style: new TextStyle(fontWeight: FontWeight.w900, fontSize: 24.0),
         ),
-        image: new Image.asset('assets/images/hogwarts.png'),
+        image: new Image.asset(
+          'assets/images/wizzards.png',
+          height: 300,
+        ),
         backgroundColor: Colors.black12,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 100.0,
-        onClick: () {},
         loaderColor: Colors.red);
   }
 }

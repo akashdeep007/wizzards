@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:wizzards/Models/ColorPallete.dart';
 import 'package:wizzards/Screens/Home/CarousalPage/CarousalPage.dart';
 import 'package:wizzards/Screens/Home/CustomDrawer/LoggedUserInfo.dart';
+import 'package:wizzards/Screens/Home/EventUpdates/EventUpdatesPage.dart';
+import 'package:wizzards/Screens/Home/QuizPage/QuizPage.dart';
 import 'package:wizzards/Screens/Home/StudentInformation/StudentInformation.dart';
 
 class CustomDrawer extends StatefulWidget {
+  final ColorPallete colorPallete;
+  final String house;
+  CustomDrawer(this.colorPallete, this.house);
   @override
   _CustomDrawerState createState() => _CustomDrawerState();
 }
@@ -13,13 +19,13 @@ class _CustomDrawerState extends State<CustomDrawer> {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Color(0xbbe1fa),
+        color: widget.colorPallete.secondaryColor,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            LoggedUserInfo(),
+            LoggedUserInfo(widget.colorPallete),
             SizedBox(
-              height: 10,
+              height: 15,
             ),
             ButtonTheme(
               height: 60,
@@ -45,12 +51,45 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   Navigator.push(
                       context,
                       new MaterialPageRoute(
-                          builder: (context) => StudentInformation()));
+                          builder: (context) =>
+                              StudentInformation(widget.colorPallete)));
                 },
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 15,
+            ),
+            ButtonTheme(
+              height: 60,
+              child: FlatButton(
+                color: Color(0x3282b8),
+                child: Container(
+                  width: double.infinity,
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Icon(Icons.notifications),
+                      Text(
+                        "Event Updates",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      new MaterialPageRoute(
+                          builder: (context) =>
+                              EventUpdatesPage(widget.colorPallete)));
+                },
+              ),
+            ),
+            SizedBox(
+              height: 15,
             ),
             ButtonTheme(
               height: 60,
@@ -63,7 +102,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       children: <Widget>[
                         Icon(Icons.view_carousel),
                         Text(
-                          " Throwback To Neophytes",
+                          "Throwback To Neophytes",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w500),
                         ),
@@ -79,6 +118,38 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 },
               ),
             ),
+            SizedBox(
+              height: 15,
+            ),
+            widget.house == ''
+                ? ButtonTheme(
+                    height: 60,
+                    child: FlatButton(
+                      color: Color(0x3282b8),
+                      child: Center(
+                        child: Container(
+                          width: double.infinity,
+                          child: Row(
+                            children: <Widget>[
+                              Icon(Icons.home),
+                              Text(
+                                "Sorting Ceremony",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            new MaterialPageRoute(
+                                builder: (context) => QuizPage()));
+                      },
+                    ),
+                  )
+                : Container(),
           ],
         ),
       ),

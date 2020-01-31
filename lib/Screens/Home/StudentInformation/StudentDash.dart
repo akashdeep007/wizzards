@@ -1,27 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:wizzards/Models/ColorPallete.dart';
 
 class StudentDash extends StatelessWidget {
   final int studentsCounts;
+  final ColorPallete colorPallete;
   final int vegFood;
-  StudentDash({this.studentsCounts, this.vegFood});
+  StudentDash({this.studentsCounts, this.vegFood, this.colorPallete});
 
   @override
   Widget build(BuildContext context) {
     return Container(
         padding: EdgeInsets.only(bottom: 40),
         decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black26,
-                blurRadius: 20.0, // has the effect of softening the shadow
-                spreadRadius: 5.0, // has the effect of extending the shadow
-                offset: Offset(
-                  10.0, // horizontal, move right 10
-                  10.0, // vertical, move down 10
-                ),
-              )
-            ],
-            color: Colors.black12,
+            color: colorPallete.primaryColor,
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(50),
                 bottomRight: Radius.circular(50))),
@@ -33,8 +24,8 @@ class StudentDash extends StatelessWidget {
               style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.w900,
-                  color: Colors.black,
-                  letterSpacing: 12),
+                  color: colorPallete.textColor,
+                  letterSpacing: 6),
             ),
           ),
           Container(
@@ -44,8 +35,8 @@ class StudentDash extends StatelessWidget {
               style: TextStyle(
                   fontSize: 48,
                   fontWeight: FontWeight.w900,
-                  color: Colors.black,
-                  letterSpacing: 12),
+                  color: colorPallete.textColor,
+                  letterSpacing: 6),
             ),
           ),
           Row(

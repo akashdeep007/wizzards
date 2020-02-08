@@ -62,9 +62,10 @@ class LoggedUserInfo extends StatelessWidget {
 
       return Container(
           width: double.infinity,
-          height: 250,
+          height: 300,
           color: primaryColor,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center ,
             children: <Widget>[
               SizedBox(
                 height: 40,
@@ -78,16 +79,46 @@ class LoggedUserInfo extends StatelessWidget {
                 userData == null ? "null" : userData.name.split(" ")[0],
                 style: TextStyle(
                     fontSize: 28,
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w700,
                     color: colorPallete.textColor),
               ),
               Text(
                 userData == null ? "null" : userData.email,
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontWeight: FontWeight.w400,
                     color: colorPallete.textColor),
               ),
+
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "Points :",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: colorPallete.textColor,
+                      fontSize: 20,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    userData == null ? "null" : userData.point,
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w400,
+                        color: colorPallete.textColor),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              )
             ],
           ));
     }

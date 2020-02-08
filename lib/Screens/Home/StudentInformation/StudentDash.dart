@@ -63,27 +63,7 @@ class StudentDash extends StatelessWidget {
                       ],
                     )),
               ),
-              Container(
-                margin: EdgeInsets.only(top: 20),
-                height: 150,
-                width: 180,
-                child: Card(
-                    elevation: 10,
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          vegFood.toString(),
-                          style: TextStyle(
-                              fontSize: 64, fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          "Veg",
-                          style: TextStyle(
-                              fontSize: 36, fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    )),
-              ),
+              
             ],
           ),
         ]));
